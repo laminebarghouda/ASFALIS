@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  api: # Node.js App
+    container_name: pfa-api
+    build: ./api
+    ports:
+      - "3000:3000" # Expose API port
+      - "9229:9229" # Expose Node process debug port (disable in production)
+    environment: # Set ENV vars
+     - NODE_ENV=local
+     - ES_HOST=elasticsearch
+     - PORT=3000
+
+#  frontend: # FrontEnd Instance
+#    container_name: pfa-frontend
+#    build:
+#      context: ./client
+#      dockerfile: Dockerfile
+#    volumes:
+#      - './client:/app'
+#      - '/app/node_modules'  #  Anonymous volume so node_volumes dont get overwritten
+#    ports:
+#      - 8080:3000
+#    environment:
+#      - CHOKIDAR_USEPOLLING=true # enables a polling mechanism for hot-reloading
+
+  elasticsearch: # Elasticsearch Instance
+    container_name: pfa-search
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    volumes: # Persist ES data in seperate "esdata" volume
+      - esdata:/usr/share/elasticsearch/data
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ports: # Expose ElasticSearch ports
+      - "9300:9300"
+      - "9200:9200"
+
+volumes:
+  esdata:

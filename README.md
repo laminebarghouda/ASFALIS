@@ -1,0 +1,2 @@
+# How to use ?
+ONLY USE SCRIPTS IN FOLDER `docker` AND YOU ARE GOOD TO GO !

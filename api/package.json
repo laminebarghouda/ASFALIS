@@ -1,0 +1,35 @@
+{
+  "name": "med-search",
+  "version": "0.0.1",
+  "description": "Elasticsearch API mirroring the data on the blockchain",
+  "scripts": {
+    "start": "node --inspect=0.0.0.0:9229 server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ansnoussi/PFA.git"
+  },
+  "author": "snoussi.anis@insat.u-carthage.tn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ansnoussi/PFA/issues"
+  },
+  "homepage": "https://github.com/ansnoussi/PFA#readme",
+  "dependencies": {
+    "elasticsearch": "13.3.1",
+    "joi": "13.0.1",
+    "koa": "2.4.1",
+    "koa-joi-validate": "0.5.1",
+    "koa-router": "7.2.1",
+    "jsdom": "^16.6.0",
+    "truffle-contract": "^4.0.31",
+    "web3": "^1.3.6"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
